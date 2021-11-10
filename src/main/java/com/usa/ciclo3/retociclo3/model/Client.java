@@ -30,8 +30,8 @@ public class Client implements Serializable {
         return idClient;
     }
 
-    public void setIdClient(Integer idClient) {
-        this.idClient = idClient;
+    public void setId(Integer id) {
+        this.idClient = id;
     }
 
     public String getEmail() {

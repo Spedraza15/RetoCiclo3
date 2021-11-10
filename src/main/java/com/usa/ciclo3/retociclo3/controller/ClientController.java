@@ -1,7 +1,7 @@
 package com.usa.ciclo3.retociclo3.controller;
 
-import com.usa.ciclo3.retociclo3.model.Category;
-import com.usa.ciclo3.retociclo3.service.CategoryService;
+import com.usa.ciclo3.retociclo3.model.Client;
+import com.usa.ciclo3.retociclo3.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -10,41 +10,41 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/Category")
+@RequestMapping("/api/Client")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
-public class CategoryController {
-
+public class ClientController {
     @Autowired
-    private CategoryService categoryService;
+    private ClientService clientService;
 
     @GetMapping("/all")
-    public List<Category> getAll() {
-        return categoryService.getAll();
+    public List<Client> getAll() {
+        return clientService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Category> getCategory(@PathVariable("id") int id) {
-        return categoryService.getCategory(id);
+    public Optional<Client> getClient(@PathVariable("id") int id) {
+
+        return clientService.getClient(id);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    private Category save(@RequestBody Category category) {
-        return categoryService.save(category);
+    private Client save(@RequestBody Client client) {
+        return clientService.save(client);
 
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Category update(@RequestBody Category category) {
-        return categoryService.update(category);
+    public Client update(@RequestBody Client client) {
+
+        return clientService.update(client);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Boolean delete(@PathVariable("id") int id) {
-        return categoryService.deleteCategory(id);
+        return clientService.deleteClient(id);
     }
-
 
 }

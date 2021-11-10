@@ -16,8 +16,10 @@ public class Quadbike implements Serializable {
     private Integer id;
     private String name;
     private String brand;
-    private Integer model;
-    private Integer category_id;
+    private Integer year;
+    private String description;
+
+
 
     @ManyToOne
     @JoinColumn(name = "idCategory")
@@ -30,7 +32,7 @@ public class Quadbike implements Serializable {
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "quadbike")
     @JsonIgnoreProperties({"quadbike", "client"})
-    private List<Reservation> reservation;
+    private List<Reservation> reservations;
 
     public Integer getId() {
         return id;
@@ -56,20 +58,20 @@ public class Quadbike implements Serializable {
         this.brand = brand;
     }
 
-    public Integer getModel() {
-        return model;
+    public Integer getYear() {
+        return year;
     }
 
-    public void setModel(Integer model) {
-        this.model = model;
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
-    public Integer getCategory_id() {
-        return category_id;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCategory_id(Integer category_id) {
-        this.category_id = category_id;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Category getCategory() {
@@ -88,11 +90,11 @@ public class Quadbike implements Serializable {
         this.messages = messages;
     }
 
-    public List<Reservation> getReservation() {
-        return reservation;
+    public List<Reservation> getReservations() {
+        return reservations;
     }
 
-    public void setReservation(List<Reservation> reservation) {
-        this.reservation = reservation;
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 }

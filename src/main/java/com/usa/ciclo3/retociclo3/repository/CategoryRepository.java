@@ -1,6 +1,6 @@
 package com.usa.ciclo3.retociclo3.repository;
 
-import com.usa.ciclo3.retociclo3.crudrepository.CategoryCrudRespository;
+import com.usa.ciclo3.retociclo3.crudrepository.CategoryCrudRepository;
 import com.usa.ciclo3.retociclo3.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,23 +13,23 @@ import java.util.Optional;
 public class CategoryRepository {
 
     @Autowired //inyeccion
-    private CategoryCrudRespository categoryCrudRespository;
+    private CategoryCrudRepository categoryCrudRepository;
 
     public List<Category> getAll() {
-        return (List<Category>) categoryCrudRespository.findAll();
+        return (List<Category>) categoryCrudRepository.findAll();
     }
 
     public Optional<Category> getCategory(int id) {
-        return categoryCrudRespository.findById(id);
+        return categoryCrudRepository.findById(id);
     }
 
     public Category save(Category category) {
-        return categoryCrudRespository.save(category);
+        return categoryCrudRepository.save(category);
 
     }
 
     public void delete(Category category) {
-        categoryCrudRespository.delete(category);
+        categoryCrudRepository.delete(category);
     }
 
 }

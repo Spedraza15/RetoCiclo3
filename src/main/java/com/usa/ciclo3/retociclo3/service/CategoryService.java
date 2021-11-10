@@ -5,7 +5,6 @@ import com.usa.ciclo3.retociclo3.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,11 +37,23 @@ public class CategoryService {
 
     public Category update(Category category) {
         if (category.getId() != null) {
-            Optional<Category> tmpCategory = categoryRepository.getCategory(category.getId());
-            if(tmpCategory.isEmpty()){
-                return categoryRepository.save(category);
+            Optional<Category> g = categoryRepository.getCategory(category.getId());
+            if (!g.isEmpty()) {
+                if (category.getDescription() != null) {
+                    g.get().setDescription(category.getDescription());
+                }
+                if (category.getName() != null) {
+                    g.get().setName(category.getName());
+                }
+                categoryRepository.save(g.get());
+                return g.get();
+
+            } else {
+                return category;
             }
-        } return null;
+        } else{
+            return category;
+        }
     }
 
     public boolean deleteCategory(int id){
