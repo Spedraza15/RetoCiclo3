@@ -6,21 +6,22 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "message")
+@Table(name="message")
+
 public class Message implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idMessage;
-    private String messageText;
+    private String  messageText;
 
     @ManyToOne
-    @JoinColumn(name = "idQuadbike")
+    @JoinColumn(name="idQuadbike")
     @JsonIgnoreProperties({"messages", "client", "reservations"})
     private Quadbike quadbike;
 
-
     @ManyToOne
-    @JoinColumn(name = "idClient")
+    @JoinColumn(name="idClient")
     @JsonIgnoreProperties({"messages", "client", "reservations"})
     private Client client;
 
@@ -44,8 +45,8 @@ public class Message implements Serializable {
         return quadbike;
     }
 
-    public void setQuadbike(Quadbike quadbike) {
-        this.quadbike = quadbike;
+    public void setQuadbike(Quadbike cabin) {
+        this.quadbike = cabin;
     }
 
     public Client getClient() {

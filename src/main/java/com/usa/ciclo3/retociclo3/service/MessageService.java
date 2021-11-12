@@ -16,7 +16,6 @@ public class MessageService {
 
     public List<Message> getAll() {
         return messageRepository.getAll();
-
     }
 
     public Optional<Message> getMessage(int id) {
@@ -37,10 +36,10 @@ public class MessageService {
     }
 
     public Message update(Message message) {
-        if (message.getIdMessage()!= null) {
+        if (message.getIdMessage() != null) {
             Optional<Message> e = messageRepository.getMessage(message.getIdMessage());
             if (!e.isEmpty()) {
-                if (message.getMessageText()!= null) {
+                if (message.getMessageText() != null) {
                     e.get().setMessageText(message.getMessageText());
                 }
                 messageRepository.save(e.get());

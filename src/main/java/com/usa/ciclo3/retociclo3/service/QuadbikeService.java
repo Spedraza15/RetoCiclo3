@@ -22,14 +22,14 @@ public class QuadbikeService {
         return quadbikeRepository.getQuadbike(id);
     }
 
-    public Quadbike save(Quadbike quadbike) {
-        if (quadbike.getId() == null) {
+    public Quadbike save(Quadbike quadbike){
+        if(quadbike.getId()==null){
             return quadbikeRepository.save(quadbike);
-        } else {
+        }else{
             Optional<Quadbike> tmpQuadbike = quadbikeRepository.getQuadbike(quadbike.getId());
-            if (tmpQuadbike.isEmpty()) {
+            if(tmpQuadbike.isEmpty()) {
                 return quadbikeRepository.save(quadbike);
-            } else {
+            }else{
                 return quadbike;
             }
         }
