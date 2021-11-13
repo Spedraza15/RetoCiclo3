@@ -17,12 +17,12 @@ public class CategoryController {
     private CategoryService categoryService;
     @GetMapping("/all")
 
-    public List<Category> getAll(){
+    public List<Category> getCategory(){
         return categoryService.getAll();
     }
 
-    @GetMapping("/{id}")
-    public Optional<Category> getCategory(@PathVariable("id") int id){
+    @GetMapping("/{idCategory}")
+    public Optional<Category> getCategory(@PathVariable("idCategory") int id){
         return categoryService.getCategory(id);
     }
 
