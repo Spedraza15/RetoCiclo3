@@ -1,8 +1,6 @@
 package com.usa.ciclo3.retociclo3.service;
 
 import com.usa.ciclo3.retociclo3.model.Reservation;
-import com.usa.ciclo3.retociclo3.reports.CountClient;
-import com.usa.ciclo3.retociclo3.reports.ReservationStatus;
 import com.usa.ciclo3.retociclo3.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,11 +69,7 @@ public class ReservationService {
         }).orElse(false);
         return aBoolean;
     }
-    public ReservationStatus getReservationStatusReport(){
-        List<Reservation> completed=reservationRepository.getReservationByStatus("completed");
-        List<Reservation> cancelled=reservationRepository.getReservationByStatus("cancelled");
-        return new ReservationStatus(completed.size(),cancelled.size());
-    }
+
 
     public List<Reservation> getReservationPeriod(String dateOne,String dateTwo){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -91,8 +85,5 @@ public class ReservationService {
         return new ArrayList<>();
     }
 
-    public List<CountClient> getTopClients(){
-        return reservationRepository.getTopClient();
-    }
 
 }

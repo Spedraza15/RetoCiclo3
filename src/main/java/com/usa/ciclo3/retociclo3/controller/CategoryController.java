@@ -11,40 +11,36 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Category")
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class CategoryController {
-
     @Autowired
     private CategoryService categoryService;
 
     @GetMapping("/all")
-    public List<Category> getAll() {
+    public List<Category> getAll(){
         return categoryService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Category> getCategory(@PathVariable("id") int id) {
+    public Optional<Category> getCategory(@PathVariable("id") int id){
         return categoryService.getCategory(id);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    private Category save(@RequestBody Category category) {
+    private Category save(@RequestBody Category category){
         return categoryService.save(category);
-
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Category update(@RequestBody Category category) {
+    public Category update(@RequestBody Category category){
         return categoryService.update(category);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Boolean delete(@PathVariable("id") int id) {
+    public  Boolean delete(@PathVariable("id") int id){
         return categoryService.deleteCategory(id);
     }
-
-
 }

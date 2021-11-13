@@ -13,9 +13,9 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idClient;
-    private String email;
-    private String password;
-    private String name;
+    private String  email;
+    private String  password;
+    private String  name;
     private Integer age;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
@@ -30,8 +30,8 @@ public class Client implements Serializable {
         return idClient;
     }
 
-    public void setId(Integer id) {
-        this.idClient = id;
+    public void setIdClient(Integer idClient) {
+        this.idClient = idClient;
     }
 
     public String getEmail() {
