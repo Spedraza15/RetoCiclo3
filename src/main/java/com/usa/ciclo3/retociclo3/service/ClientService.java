@@ -28,12 +28,13 @@ public class ClientService {
         } else {
             Optional<Client> tmpClient = clientRepository.getClient(client.getIdClient());
             if (tmpClient.isEmpty()) {
-                return clientRepository.save((client));
+                return clientRepository.save(client);
             } else {
                 return client;
             }
         }
     }
+
     public Client update(Client client){
         if (client.getIdClient() != null) {
             Optional<Client> e = clientRepository.getClient(client.getIdClient());
@@ -59,7 +60,6 @@ public class ClientService {
         } else {
             return client;
         }
-
     }
 
     public boolean deleteClient(int id){
@@ -69,5 +69,4 @@ public class ClientService {
         }).orElse(false);
         return aBoolean;
     }
-
 }

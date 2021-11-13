@@ -15,8 +15,8 @@ import java.util.Optional;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
-
     @GetMapping("/all")
+
     public List<Category> getAll(){
         return categoryService.getAll();
     }

@@ -3,6 +3,7 @@ package com.usa.ciclo3.retociclo3.repository;
 import com.usa.ciclo3.retociclo3.crudrepository.ReservationCrudRepository;
 import com.usa.ciclo3.retociclo3.model.Client;
 import com.usa.ciclo3.retociclo3.model.Reservation;
+import com.usa.ciclo3.retociclo3.reports.CounterClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -20,8 +21,8 @@ public class ReservationRepository {
         return (List<Reservation>) reservationCrudRepository.findAll();
     }
 
-    public Optional<Reservation> getReservation(int id) {
-        return reservationCrudRepository.findById(id);
+    public Optional<Reservation> getReservation(int idReservation) {
+        return reservationCrudRepository.findById(idReservation);
     }
 
     public Reservation save(Reservation reservation) {
@@ -38,6 +39,15 @@ public class ReservationRepository {
     public List<Reservation> getReservationPeriod(Date dateOne, Date dateTwo){
         return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(dateOne,dateTwo);
     }
+    public List<CounterClients> getTopClients() {
+        List<CounterClients> res = new ArrayList<>();
+        List<Object[]>report=reservationCrudRepository.countTotalReservationByClient();
+        for (int i = 0 ; i<report.size();i++){
+            res.add(new CounterClients((Long)report.get(i)[1],(Client)report.get(i)[0]));
+        }
+        return res;
+    }
+
 
 
 }

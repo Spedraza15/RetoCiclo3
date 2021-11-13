@@ -1,6 +1,8 @@
 package com.usa.ciclo3.retociclo3.service;
 
 import com.usa.ciclo3.retociclo3.model.Reservation;
+import com.usa.ciclo3.retociclo3.reports.CounterClients;
+import com.usa.ciclo3.retociclo3.reports.StatusReservation;
 import com.usa.ciclo3.retociclo3.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +29,7 @@ public class ReservationService {
     public Reservation save(Reservation reservation) {
         if (reservation.getIdReservation() == null) {
             return reservationRepository.save(reservation);
-        }else {
+        } else {
             Optional<Reservation> tmpReservation = reservationRepository.getReservation((reservation.getIdReservation()));
             if (tmpReservation.isEmpty()) {
                 return reservationRepository.save(reservation);
@@ -70,20 +72,33 @@ public class ReservationService {
         return aBoolean;
     }
 
+    public StatusReservation getReservationStatusReport() {
 
-    public List<Reservation> getReservationPeriod(String dateOne,String dateTwo){
+        List<Reservation> completed = reservationRepository.getReservationByStatus("Completed");
+        List<Reservation> cancelled = reservationRepository.getReservationByStatus("Cancelled");
+        return new StatusReservation(completed.size(), cancelled.size());
+    }
+
+    public List<Reservation> getReservationPeriod(String dateOne, String dateTwo) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
         try {
             Date startDate = dateFormat.parse(dateOne);
             Date endDate = dateFormat.parse(dateTwo);
-            if(startDate.before(endDate)){
+            if (startDate.before(endDate)){
                 return reservationRepository.getReservationPeriod(startDate,endDate);
-            }
-        }catch (Exception exception){
+        }
+
+    } catch(Exception exception) {
             exception.printStackTrace();
         }
         return new ArrayList<>();
     }
 
+    public List<CounterClients> getTopClients() {
+        return reservationRepository.getTopClients();
+    }
 
 }
+
+

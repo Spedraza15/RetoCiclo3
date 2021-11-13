@@ -66,10 +66,10 @@ public class QuadbikeService {
 
 
     public boolean deleteQuadbike(int id) {
-        Boolean aBoolean = getQuadbike(id).map(quadbike -> {
+        return getQuadbike(id).map(quadbike -> {
             quadbikeRepository.delete(quadbike);
             return true;
         }).orElse(false);
-        return aBoolean;
+
     }
 }
