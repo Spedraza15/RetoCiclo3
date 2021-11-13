@@ -41,11 +41,11 @@ public class Message implements Serializable {
         this.messageText = messageText;
     }
 
-    public Quadbike getCabin() {
+    public Quadbike getQuadbike() {
         return quadbike;
     }
 
-    public void setCabin(Quadbike quadbike) {
+    public void setQuadbike(Quadbike quadbike) {
         this.quadbike = quadbike;
     }
 

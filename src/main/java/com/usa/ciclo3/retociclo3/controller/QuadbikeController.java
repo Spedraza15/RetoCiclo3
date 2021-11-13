@@ -21,7 +21,7 @@ public class QuadbikeController {
     public List<Quadbike> getAll(){return quadbikeService.getAll();}
 
     @GetMapping("/{id}")
-    public Optional<Quadbike> getCabin(@PathVariable("id") int id){return quadbikeService.getQuadbike(id);}
+    public Optional<Quadbike> getQuadbike(@PathVariable("id") int id){return quadbikeService.getQuadbike(id);}
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
