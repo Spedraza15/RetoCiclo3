@@ -22,7 +22,7 @@ public class Quadbike implements Serializable {
 
 
     @ManyToOne
-    @JoinColumn(name="idCategory")
+    @JoinColumn(name="id",updatable = false,insertable = false)
     @JsonIgnoreProperties("quadbikes")
     private Category category;
 
