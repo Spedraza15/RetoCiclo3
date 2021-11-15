@@ -31,7 +31,6 @@ public class MessageController {
     @ResponseStatus(HttpStatus.CREATED)
     private Message save(@RequestBody Message message) {
         return messageService.save(message);
-
     }
 
     @PutMapping("/update")

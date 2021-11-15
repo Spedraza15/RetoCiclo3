@@ -15,7 +15,6 @@ public class QuadbikeService {
 
     public List<Quadbike> getAll() {
         return quadbikeRepository.getAll();
-
     }
 
     public Optional<Quadbike> getQuadbike(int id) {

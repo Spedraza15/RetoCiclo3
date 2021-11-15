@@ -2,9 +2,14 @@ package com.usa.ciclo3.retociclo3.reports;
 
 import com.usa.ciclo3.retociclo3.model.Client;
 
-public class CounterClients {
+public class CountClient {
     private Long total;
     private Client client;
+
+    public CountClient(Long total, Client client) {
+        this.total = total;
+        this.client = client;
+    }
 
     public Long getTotal() {
         return total;
@@ -22,10 +27,5 @@ public class CounterClients {
         this.client = client;
     }
 
-    public CounterClients(Long total, Client client) {
-        this.total = total;
-        this.client = client;
 
-
-    }
 }

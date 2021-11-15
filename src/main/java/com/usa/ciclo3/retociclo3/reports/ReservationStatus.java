@@ -1,10 +1,10 @@
 package com.usa.ciclo3.retociclo3.reports;
 
-public class StatusReservation {
+public class ReservationStatus {
     private int completed;
     private int cancelled;
 
-    public StatusReservation(int completed, int cancelled) {
+    public ReservationStatus(int completed, int cancelled) {
         this.completed = completed;
         this.cancelled = cancelled;
     }

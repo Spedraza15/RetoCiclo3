@@ -26,7 +26,6 @@ public class CategoryController {
         return categoryService.getCategory(id);
     }
 
-
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     private Category save(@RequestBody Category category){
